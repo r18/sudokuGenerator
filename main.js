@@ -1,4 +1,7 @@
+var answer = [];
+
 function main(){
+    
     console.log("loaded");
     var container = document.getElementById("container");
     var table = document.createElement("table");
@@ -21,6 +24,33 @@ function main(){
     table.appendChild(tb);
     container.appendChild(table);
 }
+
+function getElem(x,y){
+    container = document.getElementById('container');
+    a = container.childNodes[0].childNodes[0].
+	childNodes[Math.floor(y/3)].childNodes[Math.floor(x/3)].
+	childNodes[0].childNodes[0].childNodes[y%3].childNodes[x%3];
+    return a;
+}
+function getValue(x,y){
+    var e =  getElem(x,y);
+    e.style.backgroundColor = 'red';
+    window.setTimeout(function(){
+	e.style.backgroundColor = 'white';
+    },1500);
+    return e.innerHTML;
+}
+function setValue(x,y,v){
+    getElem(x,y).innerHTML = v;
+}
+function turnRed(elem){
+    elem.style.backgroundColor = 'red';
+    window.setTimeout(function(){
+	elem.style.backgroundColor = 'white';
+    },2000);
+}
+
+
 function genRandomTable(){
     var table = document.createElement("table");
     table.setAttribute('width',100);
@@ -33,6 +63,7 @@ function genRandomTable(){
     var tb = document.createElement("tbody");
     var rows = [];
     var r = randomSeq();
+    answer.push(r);
     for(var i=0;i<3;i++)rows.push(document.createElement("tr"));
     for(var i=0;i<3;i++){
 	for(var j=0;j<3;j++){
