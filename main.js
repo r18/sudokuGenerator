@@ -44,7 +44,7 @@ function setValue(x,y,v){
     getElem(x,y).innerHTML = v;
 }
 function turnRed(elem){
-    elem.style.backgroundColor = 'red';
+    elem.style.backgroundColor = 'skyblue';
     window.setTimeout(function(){
 	elem.style.backgroundColor = 'white';
     },2000);
